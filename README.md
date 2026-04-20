@@ -1,2 +1,2 @@
-# magorylab.github.io
+# Magory Lab Website
 Lab website code, images etc
