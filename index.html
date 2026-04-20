@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magory Research Group of Ecological Genomics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-green: #2c4a3e;
+    --teal: #3d6b5e;
+    --sage: #6b8c7e;
+    --olive: #8a9a6e;
+    --sand: #c8b89a;
+    --stone: #e8e0d4;
+    --warm-white: #f7f4f0;
+    --off-white: #faf9f7;
+    --charcoal: #2a2a27;
+    --mid-gray: #6b6b65;
+    --light-gray: #d4d0c8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(250,249,247,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--deep-green);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+  }
+  .nav-logo span {
+    display: block;
+    font-size: 0.66rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--sage);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: -2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--deep-green); }
+
+  /* PAGE SECTIONS */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeUp 0.3s ease forwards; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* STRIPE */
+  .stripe {
+    height: 3px;
+    background: linear-gradient(90deg, var(--deep-green) 0%, var(--teal) 30%, var(--sage) 60%, var(--sand) 100%);
+    margin-top: 64px;
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--stone);
+  }
+  .page-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 4rem 3rem;
+  }
+  .section-label {
+    font-size: 0.69rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+  }
+  .page-header-inner h1 {
+    font-size: 3rem;
+    color: var(--deep-green);
+    font-weight: 300;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+  }
+  .section-title {
+    font-size: 2.4rem;
+    color: var(--deep-green);
+    margin-bottom: 1rem;
+  }
+  .section-rule {
+    width: 36px;
+    height: 1px;
+    background: var(--sand);
+    margin-bottom: 3rem;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 67px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    background: var(--warm-white);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--deep-green);
+    line-height: 1.05;
+    margin-bottom: 1.25rem;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--sage);
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+  }
+  .hero-desc {
+    font-size: 0.93rem;
+    color: var(--mid-gray);
+    max-width: 460px;
+    line-height: 1.85;
+    margin-bottom: 3rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--deep-green); color: var(--off-white); }
+  .btn-primary:hover { background: var(--teal); }
+  .btn-outline { background: transparent; color: var(--deep-green); border: 1px solid var(--teal); }
+  .btn-outline:hover { background: var(--stone); }
+
+  .hero-image {
+    background: var(--deep-green);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+  }
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+  }
+  .img-placeholder svg { opacity: 0.2; }
+  .img-placeholder p {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.35);
+    text-align: center;
+  }
+
+  /* HOME BLURB */
+  .home-blurb { background: var(--warm-white); border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); }
+  .blurb-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+  .blurb-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--deep-green);
+    font-weight: 300;
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .blurb-body { font-size: 0.95rem; color: var(--mid-gray); line-height: 1.9; }
+
+  /* RESEARCH THEMES GRID */
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--light-gray);
+    border: 1.5px solid var(--light-gray);
+    margin-bottom: 2rem;
+  }
+  .theme-card {
+    background: var(--off-white);
+    padding: 2.5rem;
+    transition: background 0.2s;
+  }
+  .theme-card:hover { background: var(--warm-white); }
+  .theme-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--stone);
+    font-weight: 300;
+    display: block;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+  .theme-title { font-size: 1.15rem; color: var(--deep-green); margin-bottom: 0.75rem; }
+  .theme-desc { font-size: 0.87rem; color: var(--mid-gray); line-height: 1.8; }
+
+  /* NEWS CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .news-card { border-top: 2px solid var(--stone); padding-top: 1.5rem; }
+  .news-card-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+  }
+  .news-card h4 { font-size: 1.05rem; color: var(--deep-green); margin-bottom: 0.75rem; line-height: 1.3; }
+  .news-card p { font-size: 0.84rem; color: var(--mid-gray); line-height: 1.75; }
+
+  /* PEOPLE */
+  .people-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  .person-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--stone);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .person-photo-ph { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .person-photo-ph span { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); opacity: 0.5; }
+  .person-name { font-size: 1.3rem; color: var(--deep-green); margin-bottom: 0.25rem; }
+  .person-role { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.85rem; font-weight: 400; }
+  .person-bio { font-size: 0.87rem; color: var(--mid-gray); line-height: 1.8; }
+
+  /* PLACEHOLDER BANNER */
+  .placeholder-banner {
+    background: var(--stone);
+    border: 1px dashed var(--sand);
+    padding: 1.25rem 1.75rem;
+    font-size: 0.82rem;
+    color: var(--mid-gray);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  /* PUBLICATIONS */
+  .pub-year { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--stone); margin-bottom: 0.75rem; font-weight: 300; }
+  .pub-year-group { margin-bottom: 3rem; }
+  .pub-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--stone);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+  .pub-authors { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 0.25rem; }
+  .pub-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.25rem; font-weight: 400; font-style: italic; }
+  .pub-journal { font-size: 0.82rem; color: var(--sage); }
+  .pub-link {
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+    font-weight: 400;
+  }
+  .pub-link:hover { border-color: var(--teal); }
+
+  /* NEWS PAGE */
+  .news-full-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--stone);
+    align-items: start;
+  }
+  .news-date-col { font-size: 0.76rem; color: var(--mid-gray); padding-top: 4px; line-height: 1.5; }
+  .news-full-item h3 { font-size: 1.35rem; color: var(--deep-green); margin-bottom: 0.5rem; }
+  .news-full-item p { font-size: 0.88rem; color: var(--mid-gray); line-height: 1.8; }
+
+  /* JOIN / CONTACT */
+  .join-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 5rem; }
+  .opp-item { padding: 2rem 0; border-top: 1px solid var(--stone); }
+  .opp-item h4 { font-size: 1.15rem; color: var(--deep-green); margin-bottom: 0.5rem; }
+  .opp-item p { font-size: 0.88rem; color: var(--mid-gray); line-height: 1.8; }
+  .contact-block { padding: 2.5rem; background: var(--warm-white); border: 1px solid var(--stone); }
+  .contact-block h3 { font-size: 1.5rem; color: var(--deep-green); margin-bottom: 2rem; }
+  .contact-line { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 1.5rem; }
+  .contact-label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); font-weight: 400; }
+  .contact-val { font-size: 0.9rem; color: var(--charcoal); line-height: 1.6; }
+  .contact-val a { color: var(--teal); text-decoration: none; }
+
+  .hero-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .hero-slide.active { opacity: 1; }
+  .slide-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(247,244,240,0.4);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .slide-dot.active { background: rgba(247,244,240,0.95); }
+
+  /* MEDIA PLACEHOLDERS */
+  .media-placeholder {
+    background: var(--stone);
+    border: 1px dashed var(--sand);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  .media-placeholder-label {
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    opacity: 0.6;
+    text-align: center;
+  }
+  .media-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    max-width: 680px;
+  }
+  .media-img-ph {
+    aspect-ratio: 16/9;
+  }
+  .media-vid-ph {
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+  .media-vid-ph::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid var(--mid-gray);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    opacity: 0.35;
+    margin-left: 2px;
+  }
+
+  /* RESEARCH PAGE THEMES */
+  .research-theme {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .research-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--stone); font-weight: 300; line-height: 1; padding-top: 4px; }
+  .research-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--light-gray);
+    padding: 3px 12px;
+    margin-right: 8px;
+    margin-top: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep-green);
+    color: rgba(247,244,240,0.7);
+    padding: 3rem 4rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .footer-lab { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(247,244,240,0.9); margin-bottom: 0.3rem; }
+  .footer-sub { font-size: 0.76rem; letter-spacing: 0.04em; color: rgba(247,244,240,0.4); }
+  .footer-right { font-size: 0.76rem; text-align: right; color: rgba(247,244,240,0.4); line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      Magory Research Group
+      <span>Ecological Genomics · Tel-Hai University of Kiryat Shmona</span>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+      <li><a onclick="showPage('research')" id="nav-research">Research</a></li>
+      <li><a onclick="showPage('people')" id="nav-people">People</a></li>
+      <li><a onclick="showPage('publications')" id="nav-publications">Publications</a></li>
+      <li><a onclick="showPage('news')" id="nav-news">News</a></li>
+      <li><a onclick="showPage('join')" id="nav-join">Join & Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========== HOME ========== -->
+<div id="page-home" class="page active">
+  <div class="stripe"></div>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p>
+      <h1 class="hero-title">Magory Research Group</h1>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--deep-green);font-weight:300;letter-spacing:0.03em;margin-bottom:1.25rem;line-height:1.3;">Ecological and Evolutionary Genomics</p>
+      <p class="hero-subtitle">Genomes, microbiomes, and adaptation<br>in a changing world</p>
+      <p class="hero-desc">We study how organisms respond to rapid environmental change — connecting field ecology with genomics, transcriptomics, and microbiome analysis to understand resilience, adaptation, and the future of life in human-altered ecosystems.</p>
+      <div class="hero-cta">
+        <span class="btn btn-primary" onclick="showPage('research')">Our Research</span>
+        <span class="btn btn-outline" onclick="showPage('join')">Join the Lab</span>
+      </div>
+    </div>
+    <div class="hero-image" style="position:relative;overflow:hidden;">
+      <div id="hero-slideshow" style="width:100%;height:100%;position:relative;">
+        <img src="images/changing/swallow on net (2).jpg" class="hero-slide active" alt="Swallow on net">
+        <img src="images/changing/Inside the boat5_untilted.jpg" class="hero-slide" alt="Inside the boat">
+        <img src="images/changing/Nets in Blanco3.jpg" class="hero-slide" alt="Nets in Blanco">
+      </div>
+      <div id="slide-dots" style="position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;">
+        <span class="slide-dot active" onclick="goToSlide(0)"></span>
+        <span class="slide-dot" onclick="goToSlide(1)"></span>
+        <span class="slide-dot" onclick="goToSlide(2)"></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="home-blurb">
+    <div class="section">
+      <div class="blurb-grid">
+        <div>
+          <p class="section-label">About the Lab</p>
+          <p class="blurb-lead">"How do organisms persist, adapt, or become vulnerable in rapidly changing environments?"</p>
+        </div>
+        <div>
+          <p class="blurb-body">Our research group investigates biological responses to anthropogenic change through an integrative genomic lens. We study how environmental stressors — pollution, ecological disruption, and changing resource landscapes — affect vertebrate biology across levels of organization: from gene expression and genomic variation to microbiome structure and host–microbe interactions.</p>
+          <br>
+          <p class="blurb-body">Combining field sampling with genomic, transcriptomic, and microbiome approaches, we aim to understand both the mechanisms and consequences of environmental change — and what these responses can teach us about biodiversity, resilience, and the future of life in human-altered ecosystems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <p class="section-label">What we study</p>
+    <h2 class="section-title">Research themes</h2>
+    <div class="section-rule"></div>
+    <div class="theme-grid">
+      <div class="theme-card">
+        <span class="theme-num">01</span>
+        <h3 class="theme-title">Adaptation in Human-Altered Environments</h3>
+        <p class="theme-desc">How organisms respond evolutionarily and physiologically to pollution, habitat change, and other anthropogenic pressures.</p>
+      </div>
+      <div class="theme-card">
+        <span class="theme-num">02</span>
+        <h3 class="theme-title">Host–Microbiome Interactions</h3>
+        <p class="theme-desc">How microbial communities are shaped by host biology, environment, development, and stress in ecological context.</p>
+      </div>
+      <div class="theme-card">
+        <span class="theme-num">03</span>
+        <h3 class="theme-title">Ecological Genomics of Natural Populations</h3>
+        <p class="theme-desc">Using genomic tools to study selection, resilience, population differentiation, and environmental response.</p>
+      </div>
+      <div class="theme-card">
+        <span class="theme-num">04</span>
+        <h3 class="theme-title">Integrative Approaches Across Scales</h3>
+        <p class="theme-desc">Connecting field ecology with genomics, transcriptomics, and microbiome analysis to understand real-system responses.</p>
+      </div>
+    </div>
+    <span class="btn btn-outline" onclick="showPage('research')">Explore all themes</span>
+  </section>
+
+  <div style="background:var(--warm-white);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);">
+    <div class="section">
+      <p class="section-label">Latest</p>
+      <h2 class="section-title">News & Updates</h2>
+      <div class="section-rule"></div>
+      <div class="card-grid">
+        <div class="news-card">
+          <p class="news-card-tag">Lab Launch</p>
+          <h4>Magory Research Group opens at Hula Research Center, Tel-Hai</h4>
+          <p>We are excited to announce the launch of the Magory Research Group of Ecological Genomics at Tel-Hai University of Kiryat Shmona.</p>
+        </div>
+        <div class="news-card">
+          <p class="news-card-tag">Publication Placeholder</p>
+          <h4>Featured publication title goes here</h4>
+          <p>Journal · Year — A brief summary of this paper's key findings and contribution will appear here.</p>
+        </div>
+        <div class="news-card">
+          <p class="news-card-tag">Opportunities</p>
+          <h4>Recruiting MSc and PhD students</h4>
+          <p>Interested in ecological genomics or avian biology? We'd love to hear from you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <p class="section-label">Field & Lab</p>
+    <div class="section-rule" style="margin-top:1rem;"></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div style="aspect-ratio:16/9;overflow:hidden;">
+        <img src="images/working on jungle floor.jpg" alt="Working on jungle floor" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="aspect-ratio:1/1;overflow:hidden;">
+        <img src="images/Victor and Amazon kingfisher.jpg" alt="Victor and Amazon kingfisher" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="aspect-ratio:1/1;overflow:hidden;">
+        <img src="images/Cris looking out from boat.jpg" alt="Cris looking out from boat" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:1rem;">
+      <div style="aspect-ratio:3/1;overflow:hidden;">
+        <img src="images/Tali and Victor recovering bird from net in boat.jpg" alt="Tali and Victor recovering bird from net in boat" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-lab">Magory Research Group of Ecological Genomics</p>
+        <p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p>
+      </div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<div id="page-research" class="page">
+  <div class="stripe"></div>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">Magory Research Group</p>
+      <h1>Research</h1>
+    </div>
+  </div>
+  <div class="section" style="max-width:880px;">
+    <p class="section-label">Overview</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--deep-green);font-weight:300;line-height:1.5;margin-bottom:2rem;font-style:italic;">Our research group investigates biological responses to anthropogenic change through an integrative genomic lens.</p>
+    <p style="font-size:0.95rem;color:var(--mid-gray);line-height:1.9;margin-bottom:1.2rem;">We study how environmental stressors such as pollution, ecological disruption, and changing resource landscapes affect vertebrate biology across levels of organization — from gene expression and genomic variation to microbiome structure and host–microbe interactions. Our research sits at the intersection of evolutionary biology, ecology, and genomics.</p>
+    <p style="font-size:0.95rem;color:var(--mid-gray);line-height:1.9;">By combining field sampling with genomic, transcriptomic, and microbiome approaches, we aim to understand both the mechanisms and consequences of environmental change — and what these responses can teach us about biodiversity, resilience, and the future of life in human-altered ecosystems.</p>
+  </div>
+
+  <div style="background:var(--warm-white);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);">
+    <div class="section">
+      <p class="section-label">Research Themes</p>
+      <h2 class="section-title">Main areas of focus</h2>
+      <div class="section-rule"></div>
+
+      <div class="research-theme">
+        <div class="research-num">01</div>
+        <div>
+          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Adaptation in Human-Altered Environments</h3>
+          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">How do animals respond to the rapid pace of anthropogenic change? We investigate evolutionary and physiological responses to pollution, habitat modification, urbanization, and other human pressures — with a particular focus on birds as sensitive ecological indicators. We use population genomics, transcriptomics, and comparative approaches to identify signatures of selection, physiological plasticity, and adaptive divergence across gradients of environmental stress.</p>
+          <div style="margin-top:1.25rem;">
+            <span class="research-tag">Avian biology</span>
+            <span class="research-tag">Population genomics</span>
+            <span class="research-tag">Ecotoxicology</span>
+          </div>
+          <div class="media-row">
+            <div class="media-img-ph" style="aspect-ratio:16/9;overflow:hidden;">
+              <img src="images/victor and tali in boat.jpg" alt="Victor and Tali in boat" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="media-img-ph" style="aspect-ratio:16/9;overflow:hidden;">
+              <img src="images/Tali and Geraldy.jpg" alt="Tali and Geraldy" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="research-theme">
+        <div class="research-num">02</div>
+        <div>
+          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Host–Microbiome Interactions in Ecological Context</h3>
+          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">The microbiome is increasingly recognized as a key mediator of host health, development, and environmental response. We study how microbial communities associated with birds are shaped by host identity, life history stage, habitat quality, and environmental stress. Our work combines amplicon sequencing, shotgun metagenomics, and field ecology to understand host–microbe interactions in natural and disturbed populations.</p>
+          <div style="margin-top:1.25rem;">
+            <span class="research-tag">Microbiome ecology</span>
+            <span class="research-tag">16S & metagenomics</span>
+            <span class="research-tag">Host-symbiont coevolution</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="research-theme">
+        <div class="research-num">03</div>
+        <div>
+          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Ecological Genomics of Natural Populations</h3>
+          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">We apply whole-genome sequencing and population genomic analyses to study wild vertebrate populations — characterizing genetic diversity, demographic history, and the genomic basis of local adaptation. This work informs both fundamental questions about evolution in the wild and applied questions in conservation genetics and management of at-risk populations.</p>
+          <div style="margin-top:1.25rem;">
+            <span class="research-tag">Whole-genome sequencing</span>
+            <span class="research-tag">Conservation genomics</span>
+            <span class="research-tag">Local adaptation</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="research-theme" style="border-bottom:none;">
+        <div class="research-num">04</div>
+        <div>
+          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Integrative Approaches Across Scales</h3>
+          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">A central commitment of our research group is methodological integration. The most compelling insights emerge at the intersection of field-based natural history and genome-scale data analysis. We develop and apply integrative approaches that connect individual physiology, population processes, and community-level dynamics — moving between field ecology, molecular biology, and computational analysis as the questions demand.</p>
+          <div style="margin-top:1.25rem;">
+            <span class="research-tag">Field ecology</span>
+            <span class="research-tag">Transcriptomics</span>
+            <span class="research-tag">Bioinformatics</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-lab">Magory Research Group of Ecological Genomics</p><p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p></div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ========== PEOPLE ========== -->
+<div id="page-people" class="page">
+  <div class="stripe"></div>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">Magory Research Group</p>
+      <h1>People</h1>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Principal Investigator</p>
+    <h2 class="section-title">Principal Investigator</h2>
+    <div class="section-rule"></div>
+    <div style="display:grid;grid-template-columns:270px 1fr;gap:4rem;align-items:start;margin-bottom:5rem;">
+      <div>
+        <div class="person-photo" style="aspect-ratio:3/4;">
+          <img src="images/Tali and cardinal 2.jpg" alt="Dr. Tali Magory Cohen" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:2.1rem;color:var(--deep-green);margin-bottom:1.5rem;">Dr. Tali Magory Cohen</h3>
+        
+        <p style="font-size:0.95rem;color:var(--mid-gray);line-height:1.9;margin-bottom:1.25rem;">Dr. Tali Magory Cohen is an evolutionary ecologist interested in how animals respond to rapid environmental change. Her work combines genomics, microbiome research, and field ecology to study adaptation, resilience, and host–microbe interactions in natural systems.</p>
+        <p style="font-size:0.95rem;color:var(--mid-gray);line-height:1.9;margin-bottom:2rem;">By linking ecological context with genome-scale data, the research group aims to understand how human activities reshape organisms, populations, and the communities of microbes associated with them.</p>
+        <div class="placeholder-banner">CV and selected publications — to be added</div>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <span class="btn btn-outline" onclick="showPage('publications')">Publications</span>
+          <a class="btn btn-outline" href="mailto:tali@example.ac.il">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Lab Members</p>
+    <h2 class="section-title">Team</h2>
+    <div class="section-rule"></div>
+    <div class="people-grid">
+      <div>
+        <h3 class="person-name" style="margin-top:0;">David Gurevich</h3>
+        <p class="person-role">Lab Manager</p>
+        <p class="person-bio">Bio and research interests — to be added.</p>
+      </div>
+      <div>
+        <h3 class="person-name" style="margin-top:0;">Dvir Arussi</h3>
+        <p class="person-role">Ph.D. Candidate</p>
+        <p class="person-bio">Thesis topic and research interests — to be added.</p>
+      </div>
+      <div style="border:1px dashed var(--light-gray);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:380px;gap:1rem;padding:2rem;">
+        <p style="font-size:0.85rem;color:var(--mid-gray);font-style:italic;line-height:1.8;">We are recruiting MSc<br>and PhD students.</p>
+        <span class="btn btn-outline" onclick="showPage('join')">Get in touch</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-lab">Magory Research Group of Ecological Genomics</p><p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p></div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ========== PUBLICATIONS ========== -->
+<div id="page-publications" class="page">
+  <div class="stripe"></div>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">Magory Research Group</p>
+      <h1>Publications</h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Bodner, L., Turjeman, S., Sharon, E., Cohen, A., Bouchebti, S., Tikhonov, E., Koren, O., & Levin, E. (accepted)</p>
+        <p class="pub-title">Gut microbiome mediates an evolutionarily conserved social behavior in eusocial insects.</p>
+        <p class="pub-journal">Animal Microbiome</p>
+      </div>
+      <a href="pdfs/Gut-microbiome-mediates-an-evolutionarily-conserved-social-behavior-in-eusocial-insects.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Cohen, A., Turjeman, S., Kuzi, S., Tal, S., & Koren, O. (in review)</p>
+        <p class="pub-title">Barking up the microbiome tree: a multi-body-site characterization of maternal postpartum and pup early colonization dynamics.</p>
+        <p class="pub-journal">Animal Microbiome</p>
+      </div>
+      <a href="#" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Leonard, A., …, Magory Cohen, T., … et al. (2024)</p>
+        <p class="pub-title">A global initiative for ecological and evolutionary hologenomics.</p>
+        <p class="pub-journal">Trends in Ecology & Evolution</p>
+      </div>
+      <a href="pdfs/A-global-initiative-for-ecological-and-evolutionary-hologenomics.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Saar, M., Eyer, P. A., Magory Cohen, T., Ionescu-Hirsch, A., Dor, R. & Dorchin, N. (2023)</p>
+        <p class="pub-title">Systematics of harvester ants (Messor) in Israel based on integrated morphological, genetic, and ecological data.</p>
+        <p class="pub-journal">bioRxiv 2023.07.16.549226</p>
+      </div>
+      <a href="https://www.biorxiv.org/content/10.1101/2023.07.16.549226v1" target="_blank" class="pub-link">bioRxiv ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Bouchebti, S., Magory Cohen, T., Bodner, L., & Levin, E. (2023)</p>
+        <p class="pub-title">Chitin digestion in a eusocial insect: the digestive role of larvae in hornet colonies.</p>
+        <p class="pub-journal">Entomologia Generalis, 14(2), 491–494</p>
+      </div>
+      <a href="#" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Bouchebti, S., Bodner, L., Bergman, M., Magory Cohen, T., & Levin, E. (2022)</p>
+        <p class="pub-title">The effects of dietary proline, β-alanine, and γ-aminobutyric acid (GABA) on the nest construction behavior in the Oriental hornet (Vespa orientalis).</p>
+        <p class="pub-journal">Scientific Reports, 12(1), 1–8</p>
+      </div>
+      <a href="pdfs/The-effects-of-dietary-proline,-β-alanine,-and-γ-aminobutyric-acid-(GABA)-on-the-nest-construction-behavior-in-the-Oriental-hornet-(Vespa-orientalis).pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Hauber, M. E., Akriotis, T., Crochet, P. A., Karris, G., Kirschel, A. N., Khoury, F., Menchetti, M., Mori, E., Per, E., Reino, L., Saavedra, S., Santana, J., & Dor, R. (2022)</p>
+        <p class="pub-title">Accelerated avian invasion into the Mediterranean region endangers biodiversity and mandates international collaboration.</p>
+        <p class="pub-journal">Journal of Applied Ecology, 59, 1440–1455</p>
+      </div>
+      <a href="pdfs/Accelerated-avian-invasion-into-the-Mediterranean-region-endangers-biodiversity-and-mandates-international-collaboration.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Kiat, Y., Sharon, H., & Levin, E. (2021)</p>
+        <p class="pub-title">An Alternative Hypothesis for the Evolution of Sexual Segregation in Endotherms.</p>
+        <p class="pub-journal">Global Ecology & Biogeography, 30(12), 2420–2430</p>
+      </div>
+      <a href="pdfs/An-alternative-hypothesis-for-the-evolution-of-sexual-segregation-in-endotherms.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Shpigler, H. Y., Ben Shimol, E., Ben-Betzalel, R., Magory Cohen, T. & Levin, E. (2021)</p>
+        <p class="pub-title">Juvenile hormone increases metabolic rate and protein turnover in bumble bees (Bombus terrestris).</p>
+        <p class="pub-journal">Hormones and Behavior, 136, 105073</p>
+      </div>
+      <a href="pdfs/Juvenile-hormone-increases-metabolic-rate-and-protein-turnover-in-bumble-bees-(Bombus-terrestris).pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Major, R., Kumar, R. S., Nair, M., Ewart, K., Hauber, M. E., & Dor, R. (2021)</p>
+        <p class="pub-title">Rapid morphological changes as agents of adaptation in introduced populations of the common myna (Acridotheres tristis).</p>
+        <p class="pub-journal">Evolutionary Ecology, 35, 443–462</p>
+      </div>
+      <a href="pdfs/Rapid-morphological-changes-as-agents-of-adaptation-in-introduced-populations-of-the-common-myna-(Acridotheres-tristis).pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Haran, R., Magory Cohen, T., & Dor, R. (2021)</p>
+        <p class="pub-title">Adult sex ratio and identification of Eastern Orphean Warbler Sylvia crassirostris during autumn migration.</p>
+        <p class="pub-journal">Sandgrouse, 43, 90–98</p>
+      </div>
+      <a href="#" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Kumar, S., Nair, M., Hauber, M., & Dor, R. (2020)</p>
+        <p class="pub-title">Innovation and decreased neophobia are important for invasion success in a widespread avian invader.</p>
+        <p class="pub-journal">Animal Behaviour, 163, 61–72</p>
+      </div>
+      <a href="pdfs/Innovation-and-decreased-neophobia-drive-invasion-success-in-a-widespread-avian-invader.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., & Dor, R. (2019)</p>
+        <p class="pub-title">The effect of local species composition on the distribution of an avian invader.</p>
+        <p class="pub-journal">Scientific Reports, 9, 15861</p>
+      </div>
+      <a href="pdfs/The-effect-of-local-species-composition-on-the-distribution-of-an-avian-invader.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Levitt-Barmats, Y., Yanai, Z., Magory Cohen, T., & Shenkar, N. (2019)</p>
+        <p class="pub-title">Life-history traits and ecological characteristics of the ornamental shrimp Neocaridina denticulata, recently introduced into the freshwater systems of Israel.</p>
+        <p class="pub-journal">Aquatic Invasions, 14(4), 684–702</p>
+      </div>
+      <a href="pdfs/Life-history-traits-and-ecological-characteristics-of-the-ornamental-shrimp-Neocaridina-denticulata,-recently-introduced-into-the-freshwater-systems-of-Israel.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., McKinney, M., Kark, S. & Dor, R. (2019)</p>
+        <p class="pub-title">Global invasion in progress: The current and potential global distribution of the Common Myna (Acridotheres tristis).</p>
+        <p class="pub-journal">Biological Invasions, 21(4), 1295–1309</p>
+      </div>
+      <a href="pdfs/Global-invasion-in-progress-The-current-and-potential-global-distribution-of-the-Common-Myna-(Acridotheres-tristis).pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Haran, R. & Dor, R. (2018)</p>
+        <p class="pub-title">Signals of local adaptation across an environmental gradient among highly connected populations of the Dead Sea Sparrow Passer moabiticus in Israel.</p>
+        <p class="pub-journal">Ibis, 161(3), 619–631</p>
+      </div>
+      <a href="pdfs/Signals-of-local-adaptation-across-an-environmental-gradient-among-highly-connected-populations-of-the-Dead-Sea-Sparrow-Passer-moabiticus-in-Israel.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Ewart, K. M., Griffin, A., Johnson, R. N., Kark, S., Magory Cohen, T., Lo, N., Major, R. E. (2018)</p>
+        <p class="pub-title">Two speed invasion: assisted and intrinsic dispersal of common mynas over 150 years of colonization.</p>
+        <p class="pub-journal">Journal of Biogeography, 46(1), 45–57</p>
+      </div>
+      <a href="pdfs/Two-speed-invasion-assisted-and-intrinsic-dispersal-of-common-mynas-over-150-years-of-colonization.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Dar-Nimrod, I., MacNevin, G., Godwin, A., Lynch, K., Magory Cohen, T., & Morandini, J. (2018)</p>
+        <p class="pub-title">Genetic Knowledge within a National Australian Sample: Comparisons with Other Diverse Populations.</p>
+        <p class="pub-journal">Public Health Genomics, 21, 133–143</p>
+      </div>
+      <a href="pdfs/Genetic-Knowledge-within-a-National-Australian-Sample_Comparisons-with-Other-Diverse-Populations.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Sinaiko, G., Magory Cohen, T., Dor, R. & Meiri, S. (2017)</p>
+        <p class="pub-title">Taxonomic revision of Israeli snakes belonging to the Platyceps rhodorachis species complex (Reptilia: Squamata: Colubridae).</p>
+        <p class="pub-journal">Zootaxa, 4379(3), 301–346</p>
+      </div>
+      <a href="pdfs/Taxonomic-revision-of-Israeli-snakes-belonging-to-the-Platyceps-rhodorachis-species-complex-(Reptilia-Squamata-Colubridae).pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., Narkiss, T., Dolev, A., Ben-Ari, Y., Kronfeld-Schor, N., Guter, A., Saltz, D., & Bar-Gal, G. K. (2013)</p>
+        <p class="pub-title">Genetic Diversity of the Eurasian Otter (Lutra lutra) Population in Israel.</p>
+        <p class="pub-journal">Journal of Heredity, 104(2), 192–201</p>
+      </div>
+      <a href="pdfs/Genetic-Diversity-of-the-Eurasian-Otter.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div class="pub-item">
+      <div>
+        <p class="pub-authors">Magory Cohen, T., King, R., Dolev, A., Boldo, A., Lichter-Peled, A., & Bar-Gal, G. K. (2013)</p>
+        <p class="pub-title">Genetic characterization of populations of the golden jackal and the red fox in Israel.</p>
+        <p class="pub-journal">Conservation Genetics, 14(1), 55–63</p>
+      </div>
+      <a href="pdfs/Genetic-characterization-of-populations-of-the-golden-jackal-and-the-red-fox-in-Israel.pdf" class="pub-link">PDF ↗</a>
+    </div>
+    <div style="margin-top:2rem;padding:1.5rem 0;border-top:1px solid var(--stone);">
+      <p style="font-size:0.85rem;color:var(--mid-gray);">Full list: <a href="https://scholar.google.co.il/citations?user=IbhvF2MAAAAJ&hl=en" target="_blank" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--light-gray);">Google Scholar ↗</a></p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-lab">Magory Research Group of Ecological Genomics</p><p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p></div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ========== NEWS ========== -->
+<div id="page-news" class="page">
+  <div class="stripe"></div>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">Magory Research Group</p>
+      <h1>News</h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="news-full-item">
+      <div class="news-date-col">2025<br>Spring</div>
+      <div>
+        <p class="news-card-tag">Lab Launch</p>
+        <h3>Magory Lab opens at Hula Research Center</h3>
+        <p>The Magory Research Group of Ecological Genomics is now officially open at Tel-Hai, University of Kiryat Shmona. We are excited to begin our work at the intersection of ecological genomics, evolutionary ecology, and host-microbiome research in the Galilee region.</p>
+      </div>
+    </div>
+    <div class="news-full-item">
+      <div class="news-date-col">Ongoing</div>
+      <div>
+        <p class="news-card-tag">Recruitment</p>
+        <h3>Open positions for MSc and PhD students</h3>
+        <p>We are looking for motivated graduate students to join the research group. Projects are available across our research themes. See the Join page for details.</p>
+      </div>
+    </div>
+    <div class="news-full-item" style="border-bottom:none;opacity:0.4;">
+      <div class="news-date-col">TBC</div>
+      <div>
+        <p class="news-card-tag">Placeholder</p>
+        <h3>Future news items will appear here</h3>
+        <p>New publications, field expeditions, student achievements, and lab events will be posted here as the research group grows.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-lab">Magory Research Group of Ecological Genomics</p><p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p></div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ========== JOIN & CONTACT ========== -->
+<div id="page-join" class="page">
+  <div class="stripe"></div>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">Magory Research Group</p>
+      <h1>Join & Contact</h1>
+    </div>
+  </div>
+  <div class="section">
+    <div class="join-grid">
+      <div>
+        <p class="section-label">Opportunities</p>
+        <h2 class="section-title">Join the Research Group</h2>
+        <div class="section-rule"></div>
+        <div class="opp-item">
+          <h4>MSc & PhD Students</h4>
+          <p>We welcome applications from motivated students interested in ecological genomics, evolutionary ecology, conservation biology, avian biology, or host-microbiome research. A background in biology or related fields and an interest in combining fieldwork with molecular and computational approaches are desirable. Please contact Dr. Magory Cohen with a CV and a brief statement of your research interests.</p>
+        </div>
+        <div class="opp-item">
+          <h4>Postdoctoral Researchers</h4>
+          <p>Postdoctoral opportunities depend on available funding. Candidates interested in applying for independent fellowships to work with the research group are encouraged to reach out. We are happy to collaborate on fellowship applications with well-matched candidates.</p>
+        </div>
+        <div class="opp-item">
+          <h4>Undergraduate Projects</h4>
+          <p style="font-style:italic;color:var(--mid-gray);opacity:0.6;">Undergraduate project opportunities — details to be added.</p>
+        </div>
+        <div class="opp-item">
+          <h4>Collaborations</h4>
+          <p>We are open to collaborations with researchers working on related questions in ecological genomics, wildlife biology, ecotoxicology, or conservation science. Please get in touch to discuss potential partnerships.</p>
+        </div>
+      </div>
+      <div>
+        <div class="contact-block">
+          <h3>Contact</h3>
+          <div class="contact-line">
+            <span class="contact-label">Principal Investigator</span>
+            <span class="contact-val">Dr. Tali Magory Cohen</span>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Email</span>
+            <span class="contact-val"><a href="mailto:talimag@telhai.ac.il">talimag@telhai.ac.il</a></span>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Location</span>
+            <span class="contact-val">Hula Research Center<br>Tel-Hai<br>University of Kiryat Shmona<br>Galilee, Israel</span>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Google Scholar</span>
+            <span class="contact-val"><a href="https://scholar.google.co.il/citations?user=IbhvF2MAAAAJ&hl=en" target="_blank">Profile ↗</a></span>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">ORCID</span>
+            <span class="contact-val"><a href="https://orcid.org/0000-0001-7341-2901" target="_blank">0000-0001-7341-2901 ↗</a></span>
+          </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.162301319853!2d35.58168674416808!3d33.110878990408814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ea1bb0028bea3%3A0x847d8bd3079f1f68!2z157Xlden15Mg157Xl9en16jXmdedINeU15fXldec15QgSHVsYSBSZXNlYXJjaCBDZW50ZXI!5e0!3m2!1sen!2sil!4v1776684695027!5m2!1sen!2sil" width="100%" height="220" style="border:0;display:block;margin-top:1.5rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><p class="footer-lab">Magory Research Group of Ecological Genomics</p><p class="footer-sub">Hula Research Center, Tel-Hai University of Kiryat Shmona in the Galilee</p></div>
+      <div class="footer-right">&copy; 2025 Tali Magory Cohen</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  const navLink = document.getElementById('nav-' + id);
+  if (target) { target.classList.add('active'); window.scrollTo({ top: 0 }); }
+  if (navLink) navLink.classList.add('active');
+}
+
+// Hero slideshow
+let currentSlide = 0;
+let slides, dots;
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  goToSlide((currentSlide + 1) % slides.length);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  slides = document.querySelectorAll('.hero-slide');
+  dots = document.querySelectorAll('.slide-dot');
+  setInterval(nextSlide, 4000);
+});
+</script>
+</body>
+</html>
