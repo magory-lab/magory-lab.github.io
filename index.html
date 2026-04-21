@@ -463,6 +463,17 @@
     margin-right: 8px;
     margin-top: 12px;
   }
+  .research-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.95fr);
+    gap: 2rem;
+    align-items: start;
+  }
+  .research-side-image {
+    height: 320px;
+    overflow: hidden;
+    align-self: start;
+  }
 
   /* FOOTER */
   footer {
@@ -648,18 +659,18 @@
 
       <div class="research-theme">
         <div class="research-num">01</div>
-        <div>
-          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Adaptation in Human-Altered Environments</h3>
-          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">How do animals respond to the rapid pace of anthropogenic change? We investigate evolutionary and physiological responses to pollution, habitat modification, urbanization, and other human pressures — with a particular focus on birds as sensitive ecological indicators. We use population genomics, transcriptomics, and comparative approaches to identify signatures of selection, physiological plasticity, and adaptive divergence across gradients of environmental stress.</p>
-          <div style="margin-top:1.25rem;">
-            <span class="research-tag">Avian biology</span>
-            <span class="research-tag">Population genomics</span>
-            <span class="research-tag">Ecotoxicology</span>
-          </div>
-          <div class="media-row">
-            <div class="media-img-ph" style="aspect-ratio:16/9;overflow:hidden;">
-              <img src="images/Tali and Geraldy.jpg" alt="Tali and Geraldy" style="width:100%;height:100%;object-fit:cover;">
+        <div class="research-detail">
+          <div>
+            <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Adaptation in Human-Altered Environments</h3>
+            <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">How do animals respond to the rapid pace of anthropogenic change? We investigate evolutionary and physiological responses to pollution, habitat modification, urbanization, and other human pressures â€” with a particular focus on birds as sensitive ecological indicators. We use population genomics, transcriptomics, and comparative approaches to identify signatures of selection, physiological plasticity, and adaptive divergence across gradients of environmental stress.</p>
+            <div style="margin-top:1.25rem;">
+              <span class="research-tag">Avian biology</span>
+              <span class="research-tag">Population genomics</span>
+              <span class="research-tag">Ecotoxicology</span>
             </div>
+          </div>
+          <div class="research-side-image">
+            <img src="images/Tali and Geraldy.jpg" alt="Tali and Geraldy" style="width:100%;height:100%;object-fit:cover;">
           </div>
         </div>
       </div>
@@ -680,20 +691,19 @@
 
       <div class="research-theme">
         <div class="research-num">03</div>
-        <div>
-          <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Ecological Genomics of Natural Populations</h3>
-          <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">We apply whole-genome sequencing and population genomic analyses to study wild vertebrate populations — characterizing genetic diversity, demographic history, and the genomic basis of local adaptation. This work informs both fundamental questions about evolution in the wild and applied questions in conservation genetics and management of at-risk populations.</p>
-          <div style="margin-top:1.25rem;">
-            <span class="research-tag">Whole-genome sequencing</span>
-            <span class="research-tag">Conservation genomics</span>
-            <span class="research-tag">Local adaptation</span>
-          </div>
-          <div class="media-row">
-            <div class="media-img-ph" style="aspect-ratio:16/9;overflow:hidden;">
-              <img src="images/victor and tali in boat.jpg" alt="Victor and Tali in boat" style="width:100%;height:100%;object-fit:cover;">
+        <div class="research-detail">
+          <div>
+            <h3 style="font-size:1.5rem;color:var(--deep-green);margin-bottom:1rem;">Ecological Genomics of Natural Populations</h3>
+            <p style="font-size:0.93rem;color:var(--mid-gray);line-height:1.9;max-width:680px;">We apply whole-genome sequencing and population genomic analyses to study wild vertebrate populations â€” characterizing genetic diversity, demographic history, and the genomic basis of local adaptation. This work informs both fundamental questions about evolution in the wild and applied questions in conservation genetics and management of at-risk populations.</p>
+            <div style="margin-top:1.25rem;">
+              <span class="research-tag">Whole-genome sequencing</span>
+              <span class="research-tag">Conservation genomics</span>
+              <span class="research-tag">Local adaptation</span>
             </div>
           </div>
-
+          <div class="research-side-image">
+            <img src="images/victor and tali in boat.jpg" alt="Victor and Tali in boat" style="width:100%;height:100%;object-fit:cover;">
+          </div>
         </div>
       </div>
 
