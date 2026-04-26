@@ -491,6 +491,144 @@
   .footer-lab { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(247,244,240,0.9); margin-bottom: 0.3rem; }
   .footer-sub { font-size: 0.76rem; letter-spacing: 0.04em; color: rgba(247,244,240,0.4); }
   .footer-right { font-size: 0.76rem; text-align: right; color: rgba(247,244,240,0.4); line-height: 1.8; }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--charcoal);
+    transition: all 0.2s;
+  }
+  .nav-drawer {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(250,249,247,0.98);
+    border-bottom: 1px solid var(--light-gray);
+    z-index: 99;
+    padding: 1rem 1.5rem 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+  .nav-drawer.open { display: block; }
+  .nav-drawer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-drawer ul a {
+    display: block;
+    padding: 0.85rem 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--stone);
+    cursor: pointer;
+  }
+  .nav-drawer ul a:last-child { border-bottom: none; }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media (max-width: 768px) {
+
+    .nav-inner { padding: 0 1.25rem; }
+    .nav-logo span { display: none; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.7rem; letter-spacing: 0.04em; }
+    .nav-hamburger { display: flex; }
+    .nav-links { display: none; }
+
+    /* HERO */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 3.5rem 1.5rem 2.5rem; order: 2; }
+    .hero-title { font-size: 2.4rem; }
+    .hero-image { min-height: 280px; order: 1; }
+
+    /* SECTIONS */
+    .section { padding: 3rem 1.5rem; }
+    .page-header-inner { padding: 2.5rem 1.5rem 2rem; }
+    .page-header-inner h1 { font-size: 2.2rem; }
+
+    /* HOME BLURB */
+    .blurb-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .blurb-lead { font-size: 1.25rem; }
+
+    /* RESEARCH THEME GRID */
+    .theme-grid { grid-template-columns: 1fr; }
+
+    /* NEWS CARDS */
+    .card-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    /* RESEARCH PAGE THEMES */
+    .research-theme { grid-template-columns: 1fr; gap: 1rem; }
+    .research-num { font-size: 2rem; padding-top: 0; }
+    .media-row { grid-template-columns: 1fr; }
+
+    /* PEOPLE */
+    .people-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    div[style*="grid-template-columns:270px 1fr"] {
+      display: block !important;
+    }
+    div[style*="grid-template-columns:270px 1fr"] > div:first-child {
+      margin-bottom: 2rem;
+      max-width: 240px;
+    }
+
+    /* PUBLICATIONS */
+    .pub-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .pub-link { display: inline-block; margin-top: 0.25rem; }
+
+    /* NEWS PAGE */
+    .news-full-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .news-date-col { font-size: 0.72rem; color: var(--sage); }
+
+    /* JOIN / CONTACT */
+    .join-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 1.5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer-right { text-align: left; }
+
+    /* FIELD & LAB PHOTO GRID */
+    div[style*="grid-template-columns:2fr 1fr 1fr"] {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.75rem !important;
+    }
+    div[style*="grid-template-columns:2fr 1fr 1fr"] > div:first-child {
+      grid-column: 1 / -1;
+    }
+    div[style*="grid-template-columns:1fr;"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* RESEARCH TAGS */
+    .research-tag { margin-bottom: 6px; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links { gap: 0.6rem; }
+    .nav-links a { font-size: 0.65rem; }
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .section-title { font-size: 1.8rem; }
+    .hero-text { padding: 2.5rem 1.25rem 2rem; }
+    .section { padding: 2.5rem 1.25rem; }
+    .page-header-inner { padding: 2rem 1.25rem 1.5rem; }
+    .contact-block { padding: 1.75rem; }
+  }
 </style>
 </head>
 <body>
@@ -509,8 +647,22 @@
       <li><a onclick="showPage('news')" id="nav-news">News</a></li>
       <li><a onclick="showPage('join')" id="nav-join">Join & Contact</a></li>
     </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <ul>
+    <a onclick="showPage('home');closeMenu()">Home</a>
+    <a onclick="showPage('research');closeMenu()">Research</a>
+    <a onclick="showPage('people');closeMenu()">People</a>
+    <a onclick="showPage('publications');closeMenu()">Publications</a>
+    <a onclick="showPage('news');closeMenu()">News</a>
+    <a onclick="showPage('join');closeMenu()">Join & Contact</a>
+  </ul>
+</div>
 
 <!-- ========== HOME ========== -->
 <div id="page-home" class="page active">
@@ -1085,6 +1237,15 @@
 </div>
 
 <script>
+function toggleMenu() {
+  const drawer = document.getElementById('nav-drawer');
+  drawer.classList.toggle('open');
+}
+
+function closeMenu() {
+  document.getElementById('nav-drawer').classList.remove('open');
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
